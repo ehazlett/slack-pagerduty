@@ -31,17 +31,26 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func onCallHandler(w http.ResponseWriter, r *http.Request) {
-	onCall, err := getOnCall()
+	data, err := getOnCall()
 	if err != nil {
-		onCall = fmt.Sprintf("Error retrieving current on call...")
+		data = fmt.Sprintf("Error retrieving current on call...")
 	}
-	w.Write([]byte(onCall))
+	w.Write([]byte(data))
+}
+
+func incidentsHandler(w http.ResponseWriter, r *http.Request) {
+	data, err := getIncidents()
+	if err != nil {
+		data = fmt.Sprintf("Error retrieving current incidents...")
+	}
+	w.Write([]byte(data))
 }
 
 func main() {
 	r := mux.NewRouter()
 	r.HandleFunc("/", indexHandler)
 	r.HandleFunc("/oncall", onCallHandler)
+	r.HandleFunc("/incidents", incidentsHandler)
 
 	http.Handle("/", r)
 	fmt.Println("Running on :8080...")
