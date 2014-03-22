@@ -1,5 +1,5 @@
 # PagerDuty
-Simple PagerDuty queries.
+Simple PagerDuty queries.  Currently just returns who is on call.  Will add more as needed :)
 
 # Usage
 Listens on port 8080.
