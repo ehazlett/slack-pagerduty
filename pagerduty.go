@@ -129,7 +129,7 @@ func getIncidents() (string, error) {
 	} else {
 		rand.Seed(time.Now().UnixNano())
 		gif := HAPPY_GIFS[rand.Intn(len(HAPPY_GIFS))]
-		data = fmt.Sprintf("No incidents... \n  %s", gif)
+		data = fmt.Sprintf("No incidents... \n  <%s>", gif)
 	}
 	return data, nil
 }
